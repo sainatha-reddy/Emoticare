@@ -1,0 +1,111 @@
+/* Animation styles for Emergency Resources page */
+@keyframes pulse-alert {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.4; }
+}
+
+/* Shared animation for crisis alerts */
+@keyframes pulse-gentle {
+  0%, 100% { 
+    background-color: rgba(239, 68, 68, 0.1);
+    border-color: rgb(239, 68, 68); 
+  }
+  50% { 
+    background-color: rgba(239, 68, 68, 0.2);
+    border-color: rgb(239, 68, 68, 0.8); 
+  }
+}
+
+.animate-pulse-gentle {
+  animation: pulse-gentle 3s ease-in-out infinite;
+}
+
+/* Background pattern specific to emergency resources */
+.emergency-resources-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.1;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(255, 100, 100, 0.3) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(255, 100, 100, 0.3) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: emergency-pattern 30s infinite linear;
+}
+
+@keyframes emergency-pattern {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 40px;
+  }
+}
+
+/* Additional animations for emergency UI elements */
+@keyframes attention-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+  }
+  50% { 
+    box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+  }
+}
+
+/* Custom floating animation specific to this page (more urgent) */
+@keyframes emergency-float {
+  0% { 
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-15px) translateX(10px);
+  }
+  50% {
+    transform: translateY(0) translateX(15px);
+  }
+  75% {
+    transform: translateY(15px) translateX(5px);
+  }
+  100% { 
+    transform: translateY(0) translateX(0);
+  }
+}
+
+/* Pulse animation for crisis resources */
+.pulse-crisis {
+  animation: emergency-pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.pulse-crisis::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0), rgba(255, 0, 0, 0.1));
+  z-index: -1;
+  animation: emergency-sweep 3s linear infinite;
+}
+
+@keyframes emergency-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+    background-color: rgba(239, 68, 68, 0.1);
+  }
+  50% { 
+    box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+    background-color: rgba(239, 68, 68, 0.2);
+  }
+}
+
+@keyframes emergency-sweep {
+  0% { transform: translateX(-100%) }
+  100% { transform: translateX(100%) }
+} 

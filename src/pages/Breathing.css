@@ -1,0 +1,78 @@
+/* Custom animations for breathing exercises */
+@keyframes breathe-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+@keyframes gentle-waves {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  50% { transform: translate(-50%, -50%) rotate(180deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Background pattern */
+.breathing-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.1;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: breathing-pattern 30s infinite linear;
+}
+
+@keyframes breathing-pattern {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+/* Particle animations */
+.particle {
+  position: absolute;
+  background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+  border-radius: 50%;
+  opacity: 0;
+  animation: particle-float 15s infinite linear;
+}
+
+@keyframes particle-float {
+  0% { 
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% { 
+    transform: translateY(-100vh) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Breathing circle pulse animation */
+.breathing-circle {
+  animation: breathe-pulse 4s infinite ease-in-out;
+}
+
+/* Wave effect for "hold" phase */
+.wave-effect {
+  animation: gentle-waves 8s infinite linear;
+}
+
+/* Enhance existing tailwind animations */
+.animate-float {
+  animation-timing-function: ease-in-out;
+} 

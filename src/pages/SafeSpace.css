@@ -1,0 +1,121 @@
+/* SafeSpace.css */
+
+/* Fullscreen mode styles */
+.fullscreen-safe-space {
+  background-color: black;
+  transition: background-color 0.5s ease;
+}
+
+.fullscreen-safe-space video {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.fullscreen-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.fullscreen-header:hover {
+  opacity: 1;
+}
+
+.fullscreen-controls {
+  bottom: 2rem;
+  transition: all 0.3s ease;
+}
+
+/* Scenery cards hover effects */
+.aspect-video {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  overflow: hidden;
+}
+
+.aspect-video img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* Hover effect for scenery cards */
+.overflow-hidden:hover .aspect-video img {
+  transform: scale(1.05);
+}
+
+/* Controls fade animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s forwards;
+}
+
+.fade-out {
+  animation: fadeOut 0.3s forwards;
+}
+
+/* Cursor styles */
+.fullscreen-safe-space {
+  cursor: none;
+}
+
+.fullscreen-safe-space:hover {
+  cursor: default;
+}
+
+/* Volume slider custom styles */
+.fullscreen-controls .slider {
+  height: 4px;
+  border-radius: 2px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.fullscreen-controls .slider .slider-thumb {
+  width: 12px;
+  height: 12px;
+  background-color: white;
+}
+
+.fullscreen-controls .slider .slider-track {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Background pulse for active indicators */
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7);
+  }
+  
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(52, 211, 153, 0);
+  }
+  
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(52, 211, 153, 0);
+  }
+}
+
+.animate-pulse-green {
+  animation: pulse 2s infinite;
+} 
